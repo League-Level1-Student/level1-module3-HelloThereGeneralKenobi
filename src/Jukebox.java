@@ -28,6 +28,9 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 
 public class Jukebox implements Runnable, ActionListener {
 
+	JButton button1 = new JButton("Crab Rave");
+	JButton button = new JButton("Waah");
+	
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
 	}
@@ -43,8 +46,15 @@ public class Jukebox implements Runnable, ActionListener {
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         	JPanel panel = new JPanel();
-        	JButton button = new JButton();
+        	
         	button.addActionListener(this);
+        	
+        	button1.addActionListener(this);
+        	
+        	frame.add(panel);
+        	frame.setSize(100, 100);
+        	panel.add(button);
+        	panel.add(button1);
 
 		/*
 		 * 6. Create a user interface for your Jukebox so that the user can to
@@ -63,7 +73,19 @@ public class Jukebox implements Runnable, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Button Pressed");
+		JButton pressed = (JButton) e.getSource();
+		if(pressed == button) {
+			System.out.println("Button Pressed");
+			Song waah = new Song("Waah.mp3");
+			waah.setDuration(140);
+			waah.play();
+		}
+		else {
+			Song crab = new Song("CrabRave.mp3");
+			crab.setDuration(192);
+			crab.play();
+			
+		}
 	}
 
 }
