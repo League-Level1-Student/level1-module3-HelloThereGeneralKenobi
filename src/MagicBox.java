@@ -14,6 +14,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -32,9 +33,10 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 
 	BufferedImage backgroundImage;
 
+	MediaPalace m = new MediaPalace();
+	
 	public static void main(String[] args) throws Exception {
 		SwingUtilities.invokeLater(new MagicBox());
-	
 		
 		
 	}
@@ -56,6 +58,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		frame.addMouseListener(this);
 	}
 
 	private void loadBackgroundImage() throws Exception {
@@ -75,31 +78,43 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println(e.getX() + " " + e.getY());
+		System.out.println(backgroundImage.getRGB(e.getX(), e.getY()));
+		if(backgroundImage.getRGB(e.getX(), e.getY()) == -2113411) {
+			m.speak("spaghetti");
+		}
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(backgroundImage.getRGB(e.getX(), e.getY()) == -7698560) {
+			m.playMusicOnComputer("CrabMave.wav");
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(backgroundImage.getRGB(e.getX(), e.getY()) == -9675196) {
+			m.speak("hi mom");
+		}
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(backgroundImage.getRGB(e.getX(), e.getY()) == -1) {
+			m.playMusicOnComputer("Waah.wav");
+		}
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(backgroundImage.getRGB(e.getX(), e.getY()) == -69429) {
+			m.speak("aaaaaaah");
+		}
 	}
 
 }
