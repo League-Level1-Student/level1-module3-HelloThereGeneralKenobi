@@ -113,7 +113,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		if(backgroundImage.getRGB(e.getX(), e.getY()) == -69429) {
-			m.speak("aaaaaaah");
+			m.speak("aaaaaah");
 		}
 	}
 
